@@ -1,0 +1,35 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册页面</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/assets/img/timg.ico}"/>
+    <link rel="stylesheet" th:href="@{/assets/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/supersized.css}">
+    <link rel="stylesheet" th:href="@{/assets/css/style.css}">
+</head>
+<body>
+<div class="page-container">
+    <h1>REGISTER</h1>
+    <form id="registerForm" th:action="@{/admin/register}" method="post">
+        <div></div>
+        <input type="text" name="username" id="username" class="username" placeholder="Username">
+        <input type="password" name="password" id="password" class="password" placeholder="Password">
+        <input type="password" name="confirm_password" id="confirm_password" class="password"
+               placeholder="Confirm_Password">
+        <button type="submit" id="register">注册</button>
+        <button style="background:#FFA07A;border: 1px solid #FFA07A" type="button" id="returnBtn">返回</button>
+    </form>
+</div>
+<!-- Javascript -->
+
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/lib/jquery.js"></script>
+<script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+
+
+<script th:src="@{/assets/js/supersized.3.2.7.min.js}"></script>
+<script th:src="@{/assets/js/supersized-init.js}"></script>
+<script th:src="@{/assets/js/medicine.js}"></script>
+</body>
+</html>

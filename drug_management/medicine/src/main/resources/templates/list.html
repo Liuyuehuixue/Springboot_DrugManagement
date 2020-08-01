@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>medicineList</title>
+
+    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.css}">
+</head>
+<body class="container">
+<br/>
+<h1>药品列表</h1>
+<br/><br/>
+欢迎,<a href="/adminList" th:href="@{/admin/adminList}">[[${session.admin.username}]]</a>
+<div class="with:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>编号</th>
+            <th>药品名</th>
+            <th>功效</th>
+            <th>治疗疾病</th>
+            <th>厂商</th>
+            <th>编辑</th>
+            <th>删除</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--each来进行for循环求值-->
+        <tr  th:each="medicine,status : ${page.records}">
+            <th>[[${status.count}]]</th>
+            <th>[[${medicine.name}]]</th>
+            <th>[[${medicine.msg}]]</th>
+            <th>[[${medicine.fordisease}]]</th>
+            <th>[[${medicine.factory}]]</th>
+            <td><a th:href="@{/detail/toEdit(id=${medicine.id})}">edit</a></td>
+            <td><a th:href="@{/detail/delete(id=${medicine.id})}">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-sm-2 control-label">
+        <a href="/detail/toAdd" th:href="@{/detail/toAdd}" class="btn btn-info">add</a>
+    </div>
+</div>
+
+<div class="modal-footer no-margin-top">
+    <ul class="pagination pull-right no-margin">
+
+
+        <!-- 上一页 -->
+        <li th:if="${page.hasPrevious()}">
+            <a th:href="'/medicine/detail/list?pageCurrent=' + ${page.getCurrent()-1}" th:text="上一页"></a>
+        </li>
+
+
+        <!-- 下一页 -->
+        <li th:if="${page.hasNext()}">
+            <a th:href="'/medicine/detail/list?pageCurrent=' + ${page.getCurrent()+1}" th:text="下一页"></a>
+        </li>
+
+
+    </ul>
+</div>
+</body>
+</html>
